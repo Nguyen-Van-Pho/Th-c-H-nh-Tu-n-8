@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đồng Hồ</title>
+</head>
+<body >
+    <div> 
+        <button id="button-Start">Start</button>
+        <button id="button-Stop">Stop</button>
+        <button id="button-Reset">Reset</button>
+    </div>
+    <div>
+        <span id="Min">0</span>
+        <span>:</span>
+        <span id="Sec">0</span>
+        <span>:</span>
+        <span id="Minsec">0</span>
+    
+    
+    
+        <script>
+            var start = document.getElementById("button-Start");
+            console.log(start);
+            var stop = document.getElementById("button-Stop");
+            var reset = document.getElementById("button-Reset");
+            var min = document.getElementById("Min");
+            var sec = document.getElementById("Sec");
+            var misec = document.getElementById("Minsec");
+            var mili = 0;
+            var s = 0;
+            var m = 0;
+            var event;
+
+            start.onclick = () => {
+                clearInterval(event);
+                event = setInterval(loadtime, 10);
+            }
+
+            loadtime = () =>{
+                misec.innerText = mili++;
+                sec.innerText = s;
+                min.innerText = m;
+                if(mili == 100)
+                {
+                    mili = 0;
+                    s++;
+                    if(s === 60)
+                    {
+                        s = 0;
+                        m++;
+                    }
+                }
+            }
+            console.log(stop)
+            stop.onclick = () =>{
+                clearInterval(event);
+            }
+            console.log(reset)
+            reset.onclick = () => {
+                clearInterval(event)
+                misec.innerText = 0;
+                sec.innerText = 0;
+                min.innerText = 0;
+
+            }
+        </script>
+    </div>
+   
+</body>
+</html>
